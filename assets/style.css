@@ -1,0 +1,291 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: poppins;
+}
+
+body {
+  background-image: linear-gradient(90deg, #e2e2e2, #c9d6ff);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  overflow: hidden;
+  width: 60%;
+  height: 70vh;
+  border-radius: 20px;
+  position: relative;
+  background-color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.form-container {
+  background-color: white;
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  transition: ease-in-out 500ms 500ms;
+}
+
+h3 {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+}
+
+form.login h3 {
+  top: 25px;
+}
+
+form.register {
+  visibility: hidden;
+  transition: 500ms;
+}
+
+form {
+  position: absolute;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px 20%;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}
+
+.input-group {
+  margin: 10px;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+  height: 30px;
+  border: solid 1px;
+  outline: none;
+  border-radius: 4px;
+  padding: 2px 20px 2px 5px;
+}
+
+form button {
+  border: none;
+  border-radius: 5px;
+  height: 35px;
+  width: 60%;
+  margin-top: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+}
+
+.slider {
+  position: absolute;
+  left: 0;
+  width: 150%;
+  height: 100%;
+  border-radius: 20px;
+  transition: 500ms;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 130%;
+  height: 100%;
+  z-index: 2;
+  background-color: #007bff;
+  border-radius: 20px;
+  left: -95%;
+  transition: ease-in-out 1s;
+}
+
+.slider .register-slide {
+  position: absolute;
+  width: calc(100% / 3);
+  height: 100%;
+  z-index: 3;
+  left: 0;
+  display: Flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 400ms;
+}
+
+.slider p {
+  color: white;
+  font-weight: bold;
+  font-size: 1.7rem;
+  transform: translateY(-90%);
+}
+
+.slider button {
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #007bff;
+  background-color: white;
+  padding: 10px 50px;
+  border-radius: 5px;
+  transform: translateY(130%);
+}
+
+.slider .login-slide {
+  position: absolute;
+  width: calc(100% / 3);
+  height: 100%;
+  z-index: 3;
+  right: 0;
+  display: Flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: ease-in-out 400ms ;
+}
+
+
+.container.active form.register{
+    visibility: visible;
+    transition: 500ms;
+}
+
+.container.active .slider::before{
+    left: 33%;
+    transition: 1s;
+}
+.container.active .register-slide{
+    left: -33%;
+    transition: 500ms;
+}
+.container.active .login-slide{
+    left: 33%;
+    transition: 1200ms;
+}
+
+.container.active .form-container{
+    left: 0;
+    transition: 500ms;
+}
+
+@media screen and (max-width: 950px) {
+    .container{
+        width: 80%;
+    }
+}
+
+@media screen and (min-height: 700px) {
+    .container{
+        height: 500px;
+    }
+}
+@media screen and (max-height: 500px) {
+    .container{
+        height: 500px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .form-container{
+        width: 100%;
+    }
+    .slider{
+        bottom: 0;
+        width: 100%;
+    }
+
+    form{
+        padding-top: 50%;
+        padding-right: 15%;
+        padding-left: 15%;
+    }
+
+    form.login h3 {
+        margin-top: 45%;
+    }
+
+    .slider .register-slide{
+        top: 30px;
+        width: 100%;
+        height: 10%;
+    }
+
+    .slider p{
+        transform: none;
+        font-size: 1.2rem;
+        margin-top: 20px;
+    }
+
+    .slider button{
+        transform: none;
+        margin-top: 10px;
+    }
+
+    .slider::before{
+        width: 100%;
+        left: 0;
+        top: -70%;
+    }
+
+
+    form.register{
+        padding-top: 40%;
+    }
+
+    .slider .login-slide{
+        bottom: -50px;
+        width: 100%;
+        height: 10%;
+    }
+
+
+    /* active */
+    .container.active form.register{
+        visibility: visible;
+        transition: 500ms;
+    }
+
+    .container.active form{
+        padding-top: 10%;
+        padding-bottom: 40%;
+    }
+    
+    .container.active form h3{
+        top: 20px;
+    }
+
+    .container.active .slider::before{
+        left: 0;
+        transform: translateY(145%);
+        transition: 1s;
+    }
+    .container.active .register-slide{
+        left: 0;
+        top: -40%;
+        transition: 500ms;
+    }
+    .container.active .login-slide{
+        left: 0;
+        bottom: 10%;
+        transition: 500ms;
+    }
+    
+    .container.active .form-container{
+        left: 0;
+        transition: 500ms;
+    }
+
+    
+}
